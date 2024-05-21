@@ -3,13 +3,16 @@ Bandwidth-Efficient Inferencing at the Edge -- An Experimental Approach to Analy
 
 [Demo Video](https://youtu.be/fr44s7w-4CE)
 
+[Measurement Data (csv)](https://github.com/b06901089/R11921098_THESISv3/blob/main/nslab_data.csv)/
+[Measurement Data (Google Sheets)](https://docs.google.com/spreadsheets/d/1Sc_uSJrqslbilyXWuuKgUcYN8FauxC2wiJDxMEutVpg/edit?usp=sharing)
+
 ### Files Setup
 ---
 
 Clone this repo
 ```
-git clone https://github.com/b06901089/R11921098_THESISv2.git
-cd R11921098_THESISv2/
+git clone https://github.com/b06901089/R11921098_THESISv3.git
+cd R11921098_THESISv3/
 ```
 
 Clone [mAP](<https://github.com/Cartucho/mAP>) inside the repo
@@ -119,7 +122,7 @@ About the parameters in the config files, please refer to `config/parameter.py` 
 
 The results will be recorded in the log files.
 
-![plot](https://github.com/b06901089/R11921098_THESISv2/blob/main/image/example.png?raw=true)
+![plot](https://github.com/b06901089/R11921098_THESISv3/blob/main/image/example.png?raw=true)
 
 ### Code Reference
 
