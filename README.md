@@ -4,7 +4,8 @@ Bandwidth-Efficient Inferencing at the Edge -- An Experimental Approach to Analy
 [Demo Video](https://youtu.be/fr44s7w-4CE)
 
 [Measurement Data (csv)](https://github.com/b06901089/R11921098_THESISv3/blob/main/nslab_data.csv)/
-[Measurement Data (Google Sheets)](https://docs.google.com/spreadsheets/d/1Sc_uSJrqslbilyXWuuKgUcYN8FauxC2wiJDxMEutVpg/edit?usp=sharing)
+[Measurement Data (Google Sheets)](https://docs.google.com/spreadsheets/d/1Sc_uSJrqslbilyXWuuKgUcYN8FauxC2wiJDxMEutVpg/edit?usp=sharing)/
+[Empty Template (Google Sheets)](https://docs.google.com/spreadsheets/d/1OiAFg_P2GxH8_gPKQVUOfqzXQ58DcqLDcpOePpG8GrE/edit?usp=sharing)
 
 ### Files Setup
 ---

@@ -2,189 +2,144 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 
-df = pd.read_csv('nslab_data.csv')
+# 360p & 1440p
+def plot_A(df, res, HR_idx, LR_idx):
 
-# Bitrate Ratio vs mAP@50
-# nHD
+    x = [df.loc[row, 'RATIO'] for row in LR_idx]
+    y1 = [df.loc[row, 'mAP@50-NoSR'] for row in LR_idx]
+    y2 = [df.loc[row, 'mAP@50-BICUBIC'] for row in LR_idx]
+    y3 = [df.loc[row, 'mAP@50-FSRCNN'] for row in LR_idx]
+    y4 = [df.loc[row, 'mAP@50-BASICVSR++'] for row in LR_idx]
 
-x = df[11:22]['RATIO'].values.tolist()
-y1 = df[11:22]['mAP@50-NoSR'].values.tolist()
-y2 = df[11:22]['mAP@50-BICUBIC'].values.tolist()
-y3 = df[11:22]['mAP@50-FSRCNN'].values.tolist()
-y4 = df[11:22]['mAP@50-BASICVSR++'].values.tolist()
+    plt.plot(x, y1, 'o-b', label='mAP@50-NoSR')
+    plt.plot(x, y2, 'o-g', label='mAP@50-BICUBIC')
+    plt.plot(x, y3, 'o-r', label='mAP@50-FSRCNN')
+    plt.plot(x, y4, 'o-c', label='mAP@50-BASICVSR++')
+    plt.xlabel('Bitrate Ratio')
+    plt.ylabel('mAP@50')
+    plt.title(f'bitrate vs mAP@50 w/o {res}')
+    plt.xlim(0, 0.1)
+    plt.ylim(0, 100)
+    plt.legend()
+    plt.savefig(f'plot/{res}_bitrate_mAP@50.png', dpi=200, transparent=True)
+    plt.clf()    
 
-plt.plot(x, y1, 'o-b', label='mAP@50-NoSR')
-plt.plot(x, y2, 'o-g', label='mAP@50-BICUBIC')
-plt.plot(x, y3, 'o-r', label='mAP@50-FSRCNN')
-plt.plot(x, y4, 'o-c', label='mAP@50-BASICVSR++')
-plt.xlabel('Bitrate Ratio')
-plt.ylabel('mAP@50')
-plt.title('bitrate vs mAP@50 w/o QHD')
-plt.xlim(0, 0.1)
-plt.ylim(0, 100)
-plt.legend()
-plt.savefig('plot/1440p_bitrate_mAP@50.png', dpi=200, transparent=True)
-plt.clf()
+    HR_x = [df.loc[row, 'RATIO'] for row in HR_idx]
+    HR_y = [df.loc[row, 'mAP@50-NoSR'] for row in HR_idx]
 
-QHD_x = df[0:11]['RATIO'].values.tolist()
-QHD_y = df[0:11]['mAP@50-NoSR'].values.tolist()
+    plt.plot(x, y1, 'o-b', label='mAP@50-NoSR')
+    plt.plot(x, y2, 'o-g', label='mAP@50-BICUBIC')
+    plt.plot(x, y3, 'o-r', label='mAP@50-FSRCNN')
+    plt.plot(x, y4, 'o-c', label='mAP@50-BASICVSR++')
+    plt.plot(HR_x, HR_y, 'o-m', label=f'mAP@50-{res}')
+    plt.xlabel('Bitrate Ratio')
+    plt.ylabel('mAP@50')
+    plt.title(f'bitrate vs mAP@50 w {res}')
+    plt.xlim(0, 0.1)
+    plt.ylim(0, 100)
+    plt.legend()
+    plt.savefig(f'plot/{res}_bitrate_mAP@50_{res}.png', dpi=200, transparent=True)
+    plt.clf()
 
-plt.plot(x, y1, 'o-b', label='mAP@50-NoSR')
-plt.plot(x, y2, 'o-g', label='mAP@50-BICUBIC')
-plt.plot(x, y3, 'o-r', label='mAP@50-FSRCNN')
-plt.plot(x, y4, 'o-c', label='mAP@50-BASICVSR++')
-plt.plot(QHD_x, QHD_y, 'o-m', label='mAP@50-1440p')
-plt.xlabel('Bitrate Ratio')
-plt.ylabel('mAP@50')
-plt.title('bitrate vs mAP@50 w QHD')
-plt.xlim(0, 0.1)
-plt.ylim(0, 100)
-plt.legend()
-plt.savefig('plot/1440p_bitrate_mAP@50_QHD.png', dpi=200, transparent=True)
-plt.clf()
+    x2 = [df.loc[row, 'PSNR-BICUBIC'] for row in LR_idx]
+    x3 = [df.loc[row, 'PSNR-FSRCNN'] for row in LR_idx]
+    x4 = [df.loc[row, 'PSNR-BASICVSR++'] for row in LR_idx]
+    x5 = [df.loc[row, 'PSNR-NoSR'] for row in HR_idx[1:]]
+
+    plt.plot(x2, y2, 'o-g', label='PSNR-BICUBIC')
+    plt.plot(x3, y3, 'o-r', label='PSNR-FSRCNN')
+    plt.plot(x4, y4, 'o-c', label='PSNR-BASICVSR++')
+    plt.plot(x5, HR_y[1:], 'o-b', label=f'PSNR-{res}')
+    plt.xlabel('PSNR')
+    plt.ylabel('mAP@50')
+    plt.title('PSNR vs mAP@50')
+    plt.xlim(30, 40)
+    plt.ylim(0, 70)
+    plt.legend()
+    plt.savefig(f'plot/{res}_PSNR_mAP@50.png', dpi=200, transparent=True)
+    plt.clf()
+
+    plt.plot(x, x2, 'o-g', label='PSNR-BICUBIC')
+    plt.plot(x, x3, 'o-r', label='PSNR-FSRCNN')
+    plt.plot(x, x4, 'o-c', label='PSNR-BASICVSR++')
+    plt.plot(HR_x[1:], x5, 'o-m', label=f'PSNR-{res}')
+    plt.xlabel('bitrate')
+    plt.ylabel('PSNR')
+    plt.title('bitrate vs PSNR')
+    plt.xlim(0, 0.1)
+    plt.ylim(30, 50)
+    plt.legend()
+    plt.savefig(f'plot/{res}_bitrate_PSNR.png', dpi=200, transparent=True)
+    plt.clf()
+
+def plot_CQPandCRF(df):
+
+    CRF_row_idx = [11,15,17,19,21]
+
+    CRF_x = [df.loc[row, 'RATIO'] for row in CRF_row_idx]
+
+    CRF_y1 = [df.loc[row, 'mAP@50-NoSR'] for row in CRF_row_idx]
+    CRF_y2 = [df.loc[row, 'mAP@50-BICUBIC'] for row in CRF_row_idx]
+    CRF_y3 = [df.loc[row, 'mAP@50-FSRCNN'] for row in CRF_row_idx]
+    CRF_y4 = [df.loc[row, 'mAP@50-BASICVSR++'] for row in CRF_row_idx]
+
+    CQP_row_idx = [22,23,24,25,26]
+    CQP_x = [df.loc[row, 'RATIO'] for row in CQP_row_idx]
+
+    CQP_y1 = [df.loc[row, 'mAP@50-NoSR'] for row in CQP_row_idx]
+    CQP_y2 = [df.loc[row, 'mAP@50-BICUBIC'] for row in CQP_row_idx]
+    CQP_y3 = [df.loc[row, 'mAP@50-FSRCNN'] for row in CQP_row_idx]
+    CQP_y4 = [df.loc[row, 'mAP@50-BASICVSR++'] for row in CQP_row_idx]
+
+    plt.plot(CRF_x, CRF_y1, 'o-b', label='CRF-NoSR')
+    plt.plot(CQP_x, CQP_y1, 'o-r', label='QP-NoSR')
+    plt.xlabel('Bitrate Ratio')
+    plt.ylabel('mAP@50')
+    plt.title('CRF/QP')
+    plt.legend()
+    plt.savefig('plot/CRF_QP_NoSR_mAP@50.png', transparent=True)
+    plt.clf()
+
+    plt.plot(CRF_x, CRF_y2, 'o-b', label='CRF-BICUBIC')
+    plt.plot(CQP_x, CQP_y2, 'o-r', label='QP-BICUBIC')
+    plt.xlabel('Bitrate Ratio')
+    plt.ylabel('mAP@50')
+    plt.title('CRF/QP')
+    plt.legend()
+    plt.savefig('plot/CRF_QP_BICUBIC_mAP@50.png', transparent=True)
+    plt.clf()
+
+    plt.plot(CRF_x, CRF_y3, 'o-b', label='CRF-FSRCNN')
+    plt.plot(CQP_x, CQP_y3, 'o-r', label='QP-FSRCNN')
+    plt.xlabel('Bitrate Ratio')
+    plt.ylabel('mAP@50')
+    plt.title('CRF/QP')
+    plt.legend()
+    plt.savefig('plot/CRF_QP_FSRCNN_mAP@50.png', transparent=True)
+    plt.clf()
+
+    plt.plot(CRF_x, CRF_y4, 'o-b', label='CRF-BASICVSR++')
+    plt.plot(CQP_x, CQP_y4, 'o-r', label='QP-BASICVSR++')
+    plt.xlabel('Bitrate Ratio')
+    plt.ylabel('mAP@50')
+    plt.title('CRF/QP')
+    plt.legend()
+    plt.savefig('plot/CRF_QP_BASICVSR_mAP@50.png', transparent=True)
+    plt.clf()
 
 
-x2 = df[11:22]['PSNR-BICUBIC'].values.tolist()
-x3 = df[11:22]['PSNR-FSRCNN'].values.tolist()
-x4 = df[11:22]['PSNR-BASICVSR++'].values.tolist()
-x5 = df[1:11]['PSNR-NoSR'].values.tolist()
-QHD_y5 = df[1:11]['mAP@50-NoSR'].values.tolist()
+if __name__ == '__main__':
 
-plt.plot(x2, y2, 'o-g', label='PSNR-BICUBIC')
-plt.plot(x3, y3, 'o-r', label='PSNR-FSRCNN')
-plt.plot(x4, y4, 'o-c', label='PSNR-BASICVSR++')
-plt.plot(x5, QHD_y5, 'o-b', label='PSNR-1440p')
-plt.xlabel('PSNR')
-plt.ylabel('mAP@50')
-plt.title('PSNR vs mAP@50')
-plt.xlim(30, 40)
-plt.ylim(0, 70)
-plt.legend()
-plt.savefig('plot/1440p_PSNR_mAP@50.png', dpi=200, transparent=True)
-plt.clf()
+    df = pd.read_csv('nslab_data.csv')
 
-plt.plot(x, x2, 'o-g', label='PSNR-BICUBIC')
-plt.plot(x, x3, 'o-r', label='PSNR-FSRCNN')
-plt.plot(x, x4, 'o-c', label='PSNR-BASICVSR++')
-plt.plot(QHD_x[1:], x5, 'o-m', label='PSNR-1440p')
-plt.xlabel('bitrate')
-plt.ylabel('PSNR')
-plt.title('bitrate vs PSNR')
-plt.xlim(0, 0.1)
-plt.ylim(30, 50)
-plt.legend()
-plt.savefig('plot/1440p_bitrate_PSNR.png', dpi=200, transparent=True)
-plt.clf()
+    res = '1440p'
+    HR_idx = range(0, 11)
+    LR_idx = range(11, 22)
+    plot_A(df, res, HR_idx, LR_idx)
 
-###
+    res = '1080p'
+    HR_idx = range(28, 39)
+    LR_idx = range(39, 50)
+    plot_A(df, res, HR_idx, LR_idx)
 
-# x2 = df[6:11]['RATIO'].values.tolist()
-
-# y5 = df[6:11]['mAP@50-NoSR'].values.tolist()
-# y6 = df[6:11]['mAP@50-BICUBIC'].values.tolist()
-# y7 = df[6:11]['mAP@50-FSRCNN'].values.tolist()
-# y8 = df[6:11]['mAP@50-BASICVSR++'].values.tolist()
-
-# plt.plot(x, y1, 'o-b', label='CRF-NoSR')
-# plt.plot(x2, y5, 'o-r', label='QP-NoSR')
-# plt.xlabel('Bitrate Ratio')
-# plt.ylabel('mAP@50')
-# plt.title('CRF/QP')
-# plt.legend()
-# plt.savefig('plot/CRF_QP_NoSR_mAP@50.png', transparent=True)
-# plt.clf()
-
-# plt.plot(x, y2, 'o-b', label='CRF-BICUBIC')
-# plt.plot(x2, y6, 'o-r', label='QP-BICUBIC')
-# plt.xlabel('Bitrate Ratio')
-# plt.ylabel('mAP@50')
-# plt.title('CRF/QP')
-# plt.legend()
-# plt.savefig('plot/CRF_QP_BICUBIC_mAP@50.png', transparent=True)
-# plt.clf()
-
-# plt.plot(x, y3, 'o-b', label='CRF-FSRCNN')
-# plt.plot(x2, y7, 'o-r', label='QP-FSRCNN')
-# plt.xlabel('Bitrate Ratio')
-# plt.ylabel('mAP@50')
-# plt.title('CRF/QP')
-# plt.legend()
-# plt.savefig('plot/CRF_QP_FSRCNN_mAP@50.png', transparent=True)
-# plt.clf()
-
-# plt.plot(x, y4, 'o-b', label='CRF-BASICVSR++')
-# plt.plot(x2, y8, 'o-r', label='QP-BASICVSR++')
-# plt.xlabel('Bitrate Ratio')
-# plt.ylabel('mAP@50')
-# plt.title('CRF/QP')
-# plt.legend()
-# plt.savefig('plot/CRF_QP_BASICVSR_mAP@50.png', transparent=True)
-# plt.clf()
-
-x = df[39:50]['RATIO'].values.tolist()
-y1 = df[39:50]['mAP@50-NoSR'].values.tolist()
-y2 = df[39:50]['mAP@50-BICUBIC'].values.tolist()
-y3 = df[39:50]['mAP@50-FSRCNN'].values.tolist()
-y4 = df[39:50]['mAP@50-BASICVSR++'].values.tolist()
-
-plt.plot(x, y1, 'o-b', label='mAP@50-NoSR')
-plt.plot(x, y2, 'o-g', label='mAP@50-BICUBIC')
-plt.plot(x, y3, 'o-r', label='mAP@50-FSRCNN')
-plt.plot(x, y4, 'o-c', label='mAP@50-BASICVSR++')
-plt.xlabel('Bitrate Ratio')
-plt.ylabel('mAP@50')
-plt.title('bitrate vs mAP@50 w/o FHD')
-plt.xlim(0, 0.1)
-plt.ylim(0, 100)
-plt.legend()
-plt.savefig('plot/1080p_bitrate_mAP@50.png', dpi=200, transparent=True)
-plt.clf()
-
-QHD_x = df[28:39]['RATIO'].values.tolist()
-QHD_y = df[28:39]['mAP@50-NoSR'].values.tolist()
-
-plt.plot(x, y1, 'o-b', label='mAP@50-NoSR')
-plt.plot(x, y2, 'o-g', label='mAP@50-BICUBIC')
-plt.plot(x, y3, 'o-r', label='mAP@50-FSRCNN')
-plt.plot(x, y4, 'o-c', label='mAP@50-BASICVSR++')
-plt.plot(QHD_x, QHD_y, 'o-m', label='mAP@50-1080p')
-plt.xlabel('Bitrate Ratio')
-plt.ylabel('mAP@50')
-plt.title('bitrate vs mAP@50 w FHD')
-plt.xlim(0, 0.1)
-plt.ylim(0, 100)
-plt.legend()
-plt.savefig('plot/1080p_bitrate_mAP@50_FHD.png', dpi=200, transparent=True)
-plt.clf()
-
-x2 = df[39:50]['PSNR-BICUBIC'].values.tolist()
-x3 = df[39:50]['PSNR-FSRCNN'].values.tolist()
-x4 = df[39:50]['PSNR-BASICVSR++'].values.tolist()
-x5 = df[29:39]['PSNR-NoSR'].values.tolist()
-QHD_y5 = df[29:39]['mAP@50-NoSR'].values.tolist()
-
-plt.plot(x2, y2, 'o-g', label='PSNR-BICUBIC')
-plt.plot(x3, y3, 'o-r', label='PSNR-FSRCNN')
-plt.plot(x4, y4, 'o-c', label='PSNR-BASICVSR++')
-plt.plot(x5, QHD_y5, 'o-b', label='PSNR-1080p')
-plt.xlabel('PSNR')
-plt.ylabel('mAP@50')
-plt.title('PSNR vs mAP@50')
-plt.xlim(30, 40)
-plt.ylim(0, 70)
-plt.legend()
-plt.savefig('plot/1080p_PSNR_mAP@50.png', dpi=200, transparent=True)
-plt.clf()
-
-plt.plot(x, x2, 'o-g', label='PSNR-BICUBIC')
-plt.plot(x, x3, 'o-r', label='PSNR-FSRCNN')
-plt.plot(x, x4, 'o-c', label='PSNR-BASICVSR++')
-plt.plot(QHD_x[1:], x5, 'o-m', label='PSNR-1080p')
-plt.xlabel('bitrate')
-plt.ylabel('PSNR')
-plt.title('bitrate vs PSNR')
-plt.xlim(0, 0.1)
-plt.ylim(30, 50)
-plt.legend()
-plt.savefig('plot/1080p_bitrate_PSNR.png', dpi=200, transparent=True)
-plt.clf()
+    # plot_CQPandCRF(df)

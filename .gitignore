@@ -8,6 +8,7 @@ BasicVSR_PlusPlus/
 # Output
 My_output/*
 My_log/*
+plot/*
 
 # Cache
 __pycache__/
