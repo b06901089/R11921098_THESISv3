@@ -1,0 +1,13 @@
+# Other Repo
+mAP/
+BasicVSR_PlusPlus/
+
+# YOLO model
+*.pt
+
+# Output
+My_output/*
+My_log/*
+
+# Cache
+__pycache__/
