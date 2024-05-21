@@ -2,7 +2,9 @@
 Bandwidth-Efficient Inferencing at the Edge -- An Experimental Approach to Analyze the Effect of VSR on Compressed Video
 
 [Demo Video part 1 - Setups]()
+
 [Demo Video part 2 - Demo run]()
+
 [Demo Video part 3 - Demo plot]()
 
 [Measurement Data (csv)](https://github.com/b06901089/R11921098_THESISv3/blob/main/nslab_data.csv)/
