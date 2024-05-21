@@ -72,9 +72,7 @@ def plot_A(df, res, HR_idx, LR_idx):
     plt.savefig(f'plot/{res}_bitrate_PSNR.png', dpi=200, transparent=True)
     plt.clf()
 
-def plot_CQPandCRF(df):
-
-    CRF_row_idx = [11,15,17,19,21]
+def plot_CQPandCRF(df, CRF_row_idx, CQP_row_idx):
 
     CRF_x = [df.loc[row, 'RATIO'] for row in CRF_row_idx]
 
@@ -83,7 +81,6 @@ def plot_CQPandCRF(df):
     CRF_y3 = [df.loc[row, 'mAP@50-FSRCNN'] for row in CRF_row_idx]
     CRF_y4 = [df.loc[row, 'mAP@50-BASICVSR++'] for row in CRF_row_idx]
 
-    CQP_row_idx = [22,23,24,25,26]
     CQP_x = [df.loc[row, 'RATIO'] for row in CQP_row_idx]
 
     CQP_y1 = [df.loc[row, 'mAP@50-NoSR'] for row in CQP_row_idx]
@@ -142,4 +139,6 @@ if __name__ == '__main__':
     LR_idx = range(39, 50)
     plot_A(df, res, HR_idx, LR_idx)
 
-    # plot_CQPandCRF(df)
+    # CRF_row_idx = [11,15,17,19,21]
+    # CQP_row_idx = [22,23,24,25,26]
+    # plot_CQPandCRF(df, CRF_row_idx, CQP_row_idx)
