@@ -56,6 +56,8 @@ p = {
     # Not used in this mode
     'pyenv':    'vsr',
     # Conda env name
+    'remove_data':  "True",
+    # Remove the video frames that are applied super-resolution to save space. (True/False)
 }
 
 # Get Low Quality
@@ -73,7 +75,8 @@ p = {
     'GT_res':   '1080p',
     # Resolution of ground truth
     # (i.e. 'GT_res' should equal to 4x 'res')
-    'pyenv':    'vsr'
+    'pyenv':    'vsr',
+    'remove_data':  "True",
 }
 
 # Get High Quality
@@ -92,6 +95,7 @@ p = {
     # Resolution of ground truth
     # (i.e. 'GT_res' should equal to 'res')
     'pyenv':    'vsr',
+    'remove_data':  "True",
 }
 
 # Inference
@@ -111,4 +115,5 @@ p = {
     'res':      '270p',
     'GT_res':   '1080p',
     'pyenv':    'vsr',
+    'remove_data':  "True",
 }

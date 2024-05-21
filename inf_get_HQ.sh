@@ -21,8 +21,3 @@ do
     echo $i
 done
 python get_average_psnr.py --gt ${inter}/Inter4K_frame/60fps/${HQ_folder}/ --sr ${inter}/Inter4K_frame/60fps/${LQ_folder}/ --txt $log
-
-rm -rf ${inter}/Inter4K/60fps/${LQ_folder}
-rm -rf ${inter}/Inter4K_frame/60fps/${LQ_folder}
-
-# date '+%A %W %Y %X'
