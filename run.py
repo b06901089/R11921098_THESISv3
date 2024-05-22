@@ -92,7 +92,7 @@ def get_BI(p):
     # Remove BI4x data to save space
     if p['remove_data'] == "True":
 
-        os.system(f'rm -rf {p['inter']}/Inter4K_frame/60fps/BI4x_{p['name']}')
+        os.system('rm -rf {}/Inter4K_frame/60fps/BI4x_{}'.format(p['inter'], p['name']))
 
 def get_FSRCNN(p):
 
@@ -110,7 +110,7 @@ def get_FSRCNN(p):
     # Remove FSRCNN4x data to save space
     if p['remove_data'] == "True":
 
-        os.system(f'rm -rf {p['inter']}/Inter4K_frame/60fps/FSRCNN4x_{p['name']}')
+        os.system('rm -rf {}/Inter4K_frame/60fps/FSRCNN4x_{}'.format(p['inter'], p['name']))
 
 def get_BasicVSR(p):
 
@@ -128,7 +128,7 @@ def get_BasicVSR(p):
     # Remove BasicVSR++ data to save space
     if p['remove_data'] == "True":
 
-        os.system(f'rm -rf {p['inter']}/Inter4K_frame/60fps/BasicVSRplusplus_VSRx4_{p['name']}')
+        os.system('rm -rf {}/Inter4K_frame/60fps/BasicVSRplusplus_VSRx4_{}'.format(p['inter'], p['name']))
 
 def get_inference(p):
 
@@ -146,8 +146,8 @@ def get_inference(p):
     # Remove Low Quality data (both videos and video frames) to save space
     if p['remove_data'] == "True":
 
-        os.system(f'rm -rf {p['inter']}/Inter4K/60fps/{p['name']}')
-        os.system(f'rm -rf {p['inter']}/Inter4K_frame/60fps/{p['name']}')
+        os.system('rm -rf {}/Inter4K/60fps/{}'.format(p['inter'], p['name']))
+        os.system('rm -rf {}/Inter4K_frame/60fps/{}'.format(p['inter'], p['name']))
 
 def get_HQ(p):
 
