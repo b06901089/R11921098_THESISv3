@@ -144,6 +144,11 @@ YOLO visualization, need to clone YOLO first
 git clone https://github.com/ultralytics/yolov5
 ```
 
+```
+cd yolov5
+python detect.py --weights yolov5x6.pt --source <folder path>
+```
+
 ### Code Reference
 
 ```
