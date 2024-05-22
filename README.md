@@ -137,6 +137,7 @@ The results will be recorded in the log files.
 See the demo video for detailed information.
 
 ```
+mkdir plot
 python plot.py
 ```
 
