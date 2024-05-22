@@ -129,6 +129,21 @@ The results will be recorded in the log files.
 
 ![plot](https://github.com/b06901089/R11921098_THESISv3/blob/main/image/example.png?raw=true)
 
+
+### Visualization
+
+See the demo video for detailed information.
+
+```
+python plot.py
+```
+
+YOLO visualization, need to clone YOLO first
+
+```
+git clone https://github.com/ultralytics/yolov5
+```
+
 ### Code Reference
 
 ```
