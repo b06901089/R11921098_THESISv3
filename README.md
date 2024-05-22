@@ -138,11 +138,10 @@ See the demo video for detailed information.
 python plot.py
 ```
 
-YOLO visualization, need to clone YOLO and install one additional library
+For YOLO visualization, you will need to clone YOLO and install one additional library
 
 ```
 git clone https://github.com/ultralytics/yolov5
-pip install ultralytics
 ```
 
 Then you can simply use the scripts YOLO provided to get the bounding box rendered.
@@ -151,6 +150,24 @@ Then you can simply use the scripts YOLO provided to get the bounding box render
 cd yolov5
 python detect.py --weights yolov5x6.pt --source <folder path>
 ```
+
+Unfortunately, library `ultralytics` that `detect.py` needs will trigger dependency issues with MMCV. 
+My work around is to create another conda environment and then install YOLO requirements again. For example,
+
+```
+conda create --name yolo python=3.8
+conda activate yolo
+pip3 install torch==2.0.1 torchvision==0.15.2 torchaudio==2.0.2 --index-url https://download.pytorch.org/whl/cu118
+pip install -r requirements.txt
+```
+
+(`ultralytics` should be included in `requirements.txt`, but in case you need it to install manually)
+
+```
+pip install ultralytics
+```
+
+And then use this sepcific environment to run `detect.py`.
 
 ### Code Reference
 
