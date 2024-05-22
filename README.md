@@ -1,11 +1,13 @@
 # R11921098_THESIS
 Bandwidth-Efficient Inferencing at the Edge -- An Experimental Approach to Analyze the Effect of VSR on Compressed Video
 
-[Demo Video part 1 - Setups]()
+[Demo Video part 1 - Setups](https://youtu.be/yaGjfAWvI1I)
 
-[Demo Video part 2 - Demo run]()
+[Demo Video part 2 - Demo run](https://youtu.be/Arcdfwvgnz8)
 
-[Demo Video part 3 - Demo plot]()
+[Demo Video part 3 - Demo plot](https://youtu.be/g6F2YeXbqyE)
+
+[Demo Video part 4 - Demo visualization](https://youtu.be/V4gepF-8xaE)
 
 [Measurement Data (csv)](https://github.com/b06901089/R11921098_THESISv3/blob/main/nslab_data.csv)/
 [Measurement Data (Google Sheets)](https://docs.google.com/spreadsheets/d/1Sc_uSJrqslbilyXWuuKgUcYN8FauxC2wiJDxMEutVpg/edit?usp=sharing)/
