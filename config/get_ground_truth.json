@@ -9,6 +9,6 @@
   "inter": "../../Datasets/Inter4K",
   "res": "1080p",
   "GT_res": "",
-  "pyenv": "vsr",
+  "pyenv": "my_env",
   "remove_data": "True"
 }

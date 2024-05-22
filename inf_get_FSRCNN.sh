@@ -26,4 +26,4 @@ done
 python get_average_psnr.py --gt ${inter}/Inter4K_frame/60fps/${HR_folder}/ --sr ${inter}/Inter4K_frame/60fps/FSRCNN4x_${LR_folder}/ --txt $log
 
 # Remove FSRCNN4x data to save space
-rm -rf ${inter}/Inter4K_frame/60fps/FSRCNN4x_${LR_folder}
+# rm -rf ${inter}/Inter4K_frame/60fps/FSRCNN4x_${LR_folder}

@@ -39,6 +39,8 @@ do
 done
 python get_average_psnr.py --gt ${inter}/Inter4K_frame/60fps/${HR_folder}/ --sr ${inter}/Inter4K_frame/60fps/BasicVSRplusplus_VSRx4_${LR_folder}/ --txt $log
 
-# Remove BasicVSR++ data
+# Remove temp
 rm -rf ${inter}/Inter4K_frame/60fps/${LR_folder}_split
-rm -rf ${inter}/Inter4K_frame/60fps/BasicVSRplusplus_VSRx4_${LR_folder}
+
+# Remove BasicVSR++ data to save space
+# rm -rf ${inter}/Inter4K_frame/60fps/BasicVSRplusplus_VSRx4_${LR_folder}

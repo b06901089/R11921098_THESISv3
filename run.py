@@ -89,6 +89,11 @@ def get_BI(p):
         p['pyenv'],
     ))
 
+    # Remove BI4x data to save space
+    if p['remove_data'] == "True":
+
+        os.system(f'rm -rf {p['inter']}/Inter4K_frame/60fps/BI4x_{p['name']}')
+
 def get_FSRCNN(p):
 
     os.system('bash inf_get_FSRCNN.sh {} {} {} {} {} {} {} {}'.format(
@@ -101,6 +106,11 @@ def get_FSRCNN(p):
         p['log_name'],
         p['pyenv'],
     ))
+
+    # Remove FSRCNN4x data to save space
+    if p['remove_data'] == "True":
+
+        os.system(f'rm -rf {p['inter']}/Inter4K_frame/60fps/FSRCNN4x_{p['name']}')
 
 def get_BasicVSR(p):
 
@@ -115,6 +125,11 @@ def get_BasicVSR(p):
         p['pyenv'],
     ))
 
+    # Remove BasicVSR++ data to save space
+    if p['remove_data'] == "True":
+
+        os.system(f'rm -rf {p['inter']}/Inter4K_frame/60fps/BasicVSRplusplus_VSRx4_{p['name']}')
+
 def get_inference(p):
 
     os.system('bash inference.sh {} {} {} {} {} {} {} {}'.format(
@@ -127,6 +142,12 @@ def get_inference(p):
         p['log_name'],
         p['pyenv'],
     ))
+
+    # Remove Low Quality data (both videos and video frames) to save space
+    if p['remove_data'] == "True":
+
+        os.system(f'rm -rf {p['inter']}/Inter4K/60fps/{p['name']}')
+        os.system(f'rm -rf {p['inter']}/Inter4K_frame/60fps/{p['name']}')
 
 def get_HQ(p):
 
