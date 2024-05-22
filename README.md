@@ -151,7 +151,8 @@ cd yolov5
 python detect.py --weights yolov5x6.pt --source <folder path>
 ```
 
-Unfortunately, library `ultralytics` that `detect.py` needs will trigger dependency issues with MMCV. 
+Unfortunately, library `ultralytics` that `detect.py` needs will trigger dependency issues with MMCV.
+(They cannot share a same version of opencv-python. They need different versions.)
 My work around is to create another conda environment and then install YOLO requirements again. For example,
 
 ```
