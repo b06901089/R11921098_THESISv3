@@ -138,11 +138,14 @@ See the demo video for detailed information.
 python plot.py
 ```
 
-YOLO visualization, need to clone YOLO first
+YOLO visualization, need to clone YOLO and install one additional library
 
 ```
 git clone https://github.com/ultralytics/yolov5
+pip install ultralytics
 ```
+
+Then you can simply use the scripts YOLO provided to get the bounding box rendered.
 
 ```
 cd yolov5
