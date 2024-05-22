@@ -245,10 +245,10 @@ def Inference(p):
 
     # Remove High-resolution and Low-resolution video and video frames
     # (p.s. Data of video frames after SR are removed already)
-    os.system('rm -rf {}'.format(os.path.join(p['inter']), 'Inter4K_frame/60fps', tmp_res))
-    os.system('rm -rf {}'.format(os.path.join(p['inter']), 'Inter4K_frame/60fps', tmp_GT))
-    os.system('rm -rf {}'.format(os.path.join(p['inter']), 'Inter4K/60fps', tmp_res))
-    os.system('rm -rf {}'.format(os.path.join(p['inter']), 'Inter4K/60fps', tmp_GT))
+    os.system('rm -rf {}'.format(os.path.join(p['inter'], 'Inter4K_frame/60fps', tmp_res)))
+    os.system('rm -rf {}'.format(os.path.join(p['inter'], 'Inter4K_frame/60fps', tmp_GT)))
+    os.system('rm -rf {}'.format(os.path.join(p['inter'], 'Inter4K/60fps', tmp_res)))
+    os.system('rm -rf {}'.format(os.path.join(p['inter'], 'Inter4K/60fps', tmp_GT)))
 
 if __name__ == '__main__':
 

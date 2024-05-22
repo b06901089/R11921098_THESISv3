@@ -129,15 +129,15 @@ if __name__ == '__main__':
 
     df = pd.read_csv('nslab_data.csv')
 
-    res = '1440p'
-    HR_idx = range(0, 11)
-    LR_idx = range(11, 22)
+    res = '1080p'
+    HR_idx = range(0, 2)
+    LR_idx = range(2, 4)
     plot_A(df, res, HR_idx, LR_idx)
 
-    res = '1080p'
-    HR_idx = range(28, 39)
-    LR_idx = range(39, 50)
-    plot_A(df, res, HR_idx, LR_idx)
+    # res = '1080p'
+    # HR_idx = range(28, 39)
+    # LR_idx = range(39, 50)
+    # plot_A(df, res, HR_idx, LR_idx)
 
     # CRF_row_idx = [11,15,17,19,21]
     # CQP_row_idx = [22,23,24,25,26]
